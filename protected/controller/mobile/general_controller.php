@@ -6,19 +6,23 @@ class general_controller extends Controller
 {
     public function init()
     {
+        //定义全局参数
         $this->common = array
         (
             'baseurl' => $GLOBALS['cfg']['http_host'],
             'theme' => $GLOBALS['cfg']['http_host'] . '/public/theme/mobile/' . $GLOBALS['cfg']['enabled_theme'],
         );
+        //处理定时任务
         utilities::crontab();
     }
-    
+
+    //渲染输出移动端模板页面
     protected function compiler($tpl)
     {
         $this->display('mobile'.DS.$GLOBALS['cfg']['enabled_theme'].DS.$tpl);
     }
 
+    //验证用户是否登录并返回id
     protected function is_logined($jump = TRUE)
     {
         if (empty($_SESSION['USER']['USER_ID']))

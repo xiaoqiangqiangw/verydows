@@ -1,6 +1,7 @@
 <?php
 class oauth_controller extends general_controller
 {
+    //第三方授权登录回调地址
     public function action_callback()
     {
         $args = array();
@@ -13,7 +14,8 @@ class oauth_controller extends general_controller
         if(is_mobile_device()) jump(url('mobile/oauth', 'bind', $args));
         jump(url('oauth', 'bind', $args));
     }
-    
+
+    //第三方绑定接口
     public function action_bind()
     {
         if(empty($_SESSION['OAUTH']['KEY'])) die('Bad Request');
@@ -42,7 +44,8 @@ class oauth_controller extends general_controller
         
         echo json_encode($res);
     }
-    
+
+    //第三方解绑接口
     public function action_unbind()
     {
         $user_id = $this->is_logined();

@@ -14,6 +14,7 @@ class plugin
                 if(!empty($args))
                 {
                     $ref = new ReflectionClass($class);
+
                     self::$_instance = $ref->newInstanceArgs($args);
                     unset($ref);
                 }

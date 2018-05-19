@@ -42,6 +42,8 @@ function vencrypt($val, $timed = FALSE, $key = null)
 }
 /**
  * 数据解密
+ * param $val   原数据
+ * param $key  盐值 sha1加密
  */
 function vdecrypt($val, $expires = FALSE, $key = null)
 {

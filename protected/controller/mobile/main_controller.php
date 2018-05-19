@@ -2,11 +2,9 @@
 class main_controller extends general_controller
 {
     public function action_index()
-    {   
+    {
         $this->hot_searches = !empty($GLOBALS['cfg']['goods_hot_searches']) ? explode(',', $GLOBALS['cfg']['goods_hot_searches']) : null;
-        
         $vcache = vcache::instance();
-        
         $this->newarrival = $vcache->goods_model('find_goods', array(array('newarrival' => 1), 6), $GLOBALS['cfg']['data_cache_lifetime']);
         
         $this->recommend = $vcache->goods_model('find_goods', array(array('recommend' => 1), 6), $GLOBALS['cfg']['data_cache_lifetime']);

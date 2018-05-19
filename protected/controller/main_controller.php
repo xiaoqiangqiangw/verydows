@@ -3,6 +3,7 @@ class main_controller extends general_controller
 {
     public function action_index()
     {
+
         if(is_mobile_device() && request('display') != 'pc') jump(url('mobile/main', 'index'));
         
         $vcache = vcache::instance();

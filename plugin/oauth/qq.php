@@ -6,7 +6,8 @@
 class qq extends abstract_oauth
 {
     private $_api = 'https://graph.qq.com';
-    
+
+    //生成授权链接地址
     public function create_login_url($state)
     {
         $params = array
@@ -20,7 +21,8 @@ class qq extends abstract_oauth
         if($this->device == 'mobile') $params['display'] = 'mobile';
         return $this->_api.'/oauth2.0/authorize?'.http_build_query($params);
     }
-    
+
+
     public function check_callback($args)
     {
         if(empty($args['state']) || $args['state'] != $this->get_session('STATE') || empty($args['code'])) return FALSE;
@@ -51,7 +53,8 @@ class qq extends abstract_oauth
         }
         return FALSE;
     }
-    
+
+    //获取密钥
     public function get_oauth_key($access_token)
     {
         $uri = $this->_api.'/oauth2.0/me?access_token='.$access_token;
@@ -69,7 +72,8 @@ class qq extends abstract_oauth
         }
         return FALSE;
     }
-    
+
+    //获取用户信息
     public function get_user_info($access_token, $oauth_key)
     {
         $params = array

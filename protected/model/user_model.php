@@ -2,7 +2,8 @@
 class user_model extends Model
 {
     public $table_name = 'user';
-    
+
+    //通用验证规则
     public $rules = array
     (    
         'email' => array
@@ -21,7 +22,8 @@ class user_model extends Model
             'equal_to' => array('password', '两次密码不一致'),
         ),
     );
-    
+
+    //自定义验证规则
     public $addrules = array
     (
         'username' => array
@@ -104,6 +106,7 @@ class user_model extends Model
             {
                 if($user = $this->find(array('user_id' => (int)substr($cookie, 32))))
                 {
+                    //验证ip地址 防止cookie攻击
                     if(md5($ip.substr($user['password'], 6, 24)) == substr($cookie, 0, 32))
                     {
                         $this->set_logined_info($ip, $user['user_id'], $user['username'], $user['avatar']);
@@ -120,9 +123,11 @@ class user_model extends Model
      */
     public function set_logined_info($ip, $user_id, $username, $avatar = '')
     {
+        //记录最近登录信息
         $record_model = new user_record_model();
         $rec = $record_model->find(array('user_id' => $user_id));
         $record_model->update(array('user_id' => $user_id), array('last_date' => $_SERVER['REQUEST_TIME'], 'last_ip' => $ip));
+        //设置cookis和session
         $_SESSION['USER']['USER_ID'] = $user_id;
         $_SESSION['USER']['LAST_DATE'] = $rec['last_date'];
         $_SESSION['USER']['LAST_IP'] = $rec['last_ip'];
