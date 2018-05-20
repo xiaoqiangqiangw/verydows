@@ -139,15 +139,6 @@ class wechat_model extends Model
     {
         //$weObj = new \Wechat($this->options);
         $weObj = $this->weObj;
-//        $callBackUrl = 'http://vip.51gpc.com/index.php/WeChat/Home/dyCallback';
-        $url_index = $weObj->getOauthRedirect('http://47.100.112.119/index.php?c=wechat&a=index');
-        $url_category = $weObj->getOauthRedirect('http://47.100.112.119/index.php?c=wechat&a=category');
-        $url_taowu = $weObj->getOauthRedirect('http://47.100.112.119/index.php?c=wechat&a=taowu');
-        $url_userindex = $weObj->getOauthRedirect('http://47.100.112.119/index.php?c=wechat&a=userindex');
-        $url_order = $weObj->getOauthRedirect('http://47.100.112.119/index.php?c=wechat&a=order');
-        $url_help = $weObj->getOauthRedirect('http://47.100.112.119/index.php?c=wechat&a=help');
-        $url_feedback = $weObj->getOauthRedirect('http://47.100.112.119/index.php?c=wechat&a=feedback');
-
         $manuData = array (
             'button' => array (
                 0 => array (
@@ -157,19 +148,19 @@ class wechat_model extends Model
                             'type' => 'view',
                             'name' => '首页',
                             'key' => 'menu_0_0',
-                            'url'=>$url_index,
+                            'url'=>'http://47.100.112.119/index.php?m=mobile&c=main&a=index',
                         ),
                         1 => array (
                             'type' => 'view',
                             'name' => '商品分类',
                             'key' => 'menu_0_1',
-                            'url'=>$url_category,
+                            'url'=>'http://47.100.112.119/index.php?m=mobile&c=category&a=index',
                         ),
                         2 => array (
                             'type' => 'view',
                             'name' => '淘物街',
                             'key' => 'menu_0_2',
-                            'url'=>$url_taowu,
+                            'url'=>'http://47.100.112.119/index.php?m=mobile&c=taowu&a=index',
                         ),
 //                        3 => array (
 //                            'type' => 'view',
@@ -215,19 +206,19 @@ class wechat_model extends Model
                             'type' => 'view',
                             'name' => '个人中心',
                             'key' => 'menu_1_0',
-                            'url'=>$url_userindex,
+                            'url'=>'http://47.100.112.119/index.php?m=mobile&c=user&a=index',
                         ),
                         1 => array (
                             'type' => 'view',
                             'name' => '我的订单',
                             'key' => 'menu_1_1',
-                            'url'=>$url_order,
+                            'url'=>'http://47.100.112.119/index.php?m=mobile&c=order&a=list&order_status=all',
                         ),
                         2 => array (
                             'type' => 'view',
                             'name' => '帮助中心',
                             'key' => 'menu_1_2',
-                            'url'=>$url_help,
+                            'url'=>'http://47.100.112.119/index.php?m=mobile&c=help&a=index',
                         ),
                         3 => array (
                             'type' => 'view',
