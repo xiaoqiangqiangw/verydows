@@ -257,6 +257,15 @@ function is_mobile_device()
 }
 
 /**
+ * 客户端是否是微信
+ */
+function is_weixin() {
+    if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
+        return true;
+    } return false;
+}
+
+/**
  * 返回基准URL
  */
 function baseurl()
@@ -271,4 +280,14 @@ function baseurl()
     }
     return $protocol.dirname($_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']);
 }
+
+/**
+ * 记录调试数据
+ */
+function logfile($filename,$content,$remark){
+    $fp = fopen($filename,'a+');
+    fwrite($fp,'时间：'.date('Y-m-d H:i:s',time()).'备注：'.$remark."\n".'内容'.json_encode($content)."\n\r");
+    fclose($fp);
+}
+
 ?>

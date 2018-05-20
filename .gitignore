@@ -1,7 +1,16 @@
-﻿/index.php
+/index.php
 /.htaccess
 /nginx.conf
 /upload
 /protected/config.php
 /protected/cache
 /protected/view/adv
+userinfotest.php
+access_token.php
+.idea/xiaobangshou.iml
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/dictionaries/hasee.xml
+.gitignore
