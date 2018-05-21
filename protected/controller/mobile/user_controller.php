@@ -9,6 +9,9 @@ class user_controller extends general_controller
         //获取基本信息
         $user_model = new user_model();
         $this->user = $user_model->find(array('user_id' => $user_id));
+        //获取详细信息
+        $profile_model = new user_profile_model();
+        $this->profile = $profile_model->find(array('user_id' => $user_id));
         //获取账户信息
         $account_model = new user_account_model();
         $this->account = $account_model->get_user_account($user_id);
